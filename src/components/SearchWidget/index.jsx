@@ -2,10 +2,12 @@ import { React, useState, useEffect } from "react";
 import ShowList from "../ShowList";
 import { useShow } from "../../contexts";
 import SearchForm from "../SearchForm";
+import FilterSearch from "../FilterSearch";
 
 export default function SearchWidget() {
   const [searchString, setSearchString] = useState("24");
-  const {setShowData } = useShow();
+  const [minRating, setMinRating] = useState(0);
+  const { setShowData } = useShow();
 
   useEffect(() => {
     async function searchAPI() {
@@ -23,7 +25,8 @@ export default function SearchWidget() {
   return (
     <>
       <SearchForm setSearchString={setSearchString} />
-      <ShowList />
+      <FilterSearch minRating={minRating} setMinRating={setMinRating} />
+      <ShowList minRating={minRating} />
     </>
   );
 }
