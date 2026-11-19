@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-// import showRouter from './routers/showRoutes.js';
+import showRouter from './routers/showRouter.js';
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(express.static('public', {
   extensions: ['html'],
 }));
 
-// app.use('/shows', showRouter);
+app.use('/shows', showRouter);
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'movie-tracker api' });
