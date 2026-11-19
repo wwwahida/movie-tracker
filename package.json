@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "setup-db": "node api/database/setup.js"
+    "setup-db": "node api/database/setup.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "dotenv": "^18.0.10",
