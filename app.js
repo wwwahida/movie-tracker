@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import showRouter from './routers/showRouter.js';
+import showRouter from './api/routers/showRouter.js';
 
 const app = express();
 
