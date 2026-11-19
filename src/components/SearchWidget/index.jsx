@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from "react";
 import ShowList from "../ShowList";
 import { useShow } from "../../contexts";
+import SearchForm from "../SearchForm";
 
 export default function SearchWidget() {
-  const [inputValue, setInputValue] = useState("");
   const [searchString, setSearchString] = useState("24");
-  //const [showData, setShowData] = useState([]);
-  const {showData, setShowData } = useShow();
+  const {setShowData } = useShow();
 
   useEffect(() => {
     async function searchAPI() {
@@ -15,30 +14,15 @@ export default function SearchWidget() {
       );
       const rawData = await response.json();
       const data = rawData.map((s) => s.show);
-      console.log(data);
       setShowData(data);
     }
 
     searchAPI();
-  }, [searchString]);
-
-  function handleInput(e) {
-    const newInput = e.target.value;
-    setInputValue(newInput);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setSearchString(inputValue);
-    setInputValue("");
-  }
+  }, [searchString, setShowData]);
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleInput} value={inputValue} required />
-        <input type="submit" value="Search" />
-      </form>
+      <SearchForm setSearchString={setSearchString} />
       <ShowList />
     </>
   );
