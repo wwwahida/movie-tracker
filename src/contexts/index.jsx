@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext } from "react";
 
 const ShowContext = createContext();
+const FilterContext = createContext();
 
 export const ShowProvider = ({ children }) => {
   const [showData, setShowData] = useState([]);
@@ -12,4 +13,15 @@ export const ShowProvider = ({ children }) => {
   );
 };
 
+export const FilterProvider = ({ children }) => {
+  const [minRating, setMinRating] = useState(0);
+  
+  return (
+    <FilterContext.Provider value={{ minRating, setMinRating }}>
+      {children}
+    </FilterContext.Provider>
+  );
+}
+
 export const useShow = () => useContext(ShowContext)
+export const useFilter = () => useContext(FilterContext)

@@ -6,7 +6,6 @@ import FilterSearch from "../FilterSearch";
 
 export default function SearchWidget() {
   const [searchString, setSearchString] = useState("24");
-  const [minRating, setMinRating] = useState(0);
   const { setShowData } = useShow();
 
   useEffect(() => {
@@ -25,8 +24,8 @@ export default function SearchWidget() {
   return (
     <>
       <SearchForm setSearchString={setSearchString} />
-      <FilterSearch minRating={minRating} setMinRating={setMinRating} />
-      <ShowList minRating={minRating} />
+      <FilterSearch />
+      <ShowList />
     </>
   );
 }

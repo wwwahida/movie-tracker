@@ -1,6 +1,9 @@
 import { React, useState } from "react";
+import { useFilter } from "../../contexts";
 
-export default function FilterSearch({ minRating, setMinRating }) {
+export default function FilterSearch() {
+  const { minRating, setMinRating } = useFilter();
+
   function handleRating(e) {
     const selectedRating = Number(e.target.value);
     setMinRating(selectedRating);
